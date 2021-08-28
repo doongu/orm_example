@@ -22,15 +22,28 @@ class Demo(Base):
     english = Column(VARCHAR(45))
 
 Base.metadata.tables
-# for k,v in Base.metadata.tables.items():
-#     print(f"{k}: {v}")
 Base.metadata.create_all(engine)
 
+# 테이블 생성 부분
 demo = Demo(name="hello", math="world", english="new")
 session.add(demo)
-# # find_demos = session.query(Demo).filter_by(name="hello").all()
 
-# # for demo in find_demos:
-# #     print(demo.name)
+# update
+# upt = session.query(Demo).filter(Demo.name =="hello").update({"name":"update this content"})
+# print(upt)
 
+# delete
+# de = session.query(Demo).filter(Demo.name == "update this content").delete()
+# print(de)
+# print(session.query(Demo).count())
+
+# read
+# find_demos = session.query(Demo).filter_by(name="update this content").all()
+
+# for each in find_demos:
+#     print("select_result : ", each.name)
+
+
+# coomit
 session.commit()
+
